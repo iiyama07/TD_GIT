@@ -15,3 +15,5 @@
         printf("La mensualite est de %d euros.\n", mensualite);
         return 0;
     }
+
+/*Saluuut c'est adaaaam*/
