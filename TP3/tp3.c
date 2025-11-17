@@ -15,7 +15,6 @@ int main() {
     char img[100][100];
     int i, j;
 
-
     for (i = 0; i < max_height; i++) {
         for (j = 0; j < width; j++) {
             img[i][j] = ' ';
@@ -39,6 +38,23 @@ int main() {
 
     img[n-1][mid - n] = '_';
     img[n-1][mid + n] = '_';
+
+    int cotegauche = mid - (n - 2);
+    int cotedroit = mid + (n - 2);
+
+    for (i = n; i < max_height && cotegauche < cotedroit; i++) {
+        for (j = 0; j < width; j++) {
+
+            if (j == cotegauche || j == cotedroit) {
+                img[i][j] = '.';   
+            } else if (j > cotegauche && j < cotedroit) {
+                img[i][j] = 'S';   
+            }
+        }
+
+        cotegauche++;      
+        cotedroit--;
+    }
 
     printf("\nImage (%d x %d) :\n", max_height, width);
     for (i = 0; i < max_height; i++) {
