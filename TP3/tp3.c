@@ -20,7 +20,9 @@ int main() {
             img[i][j] = ' ';
         }
     }
-
+    for (i =0; i < width; i++) {
+        img[n-1][i] = '_';
+    }
     int mid = width / 2;
 
     for (i = 0; i < n; i++) {
@@ -36,25 +38,24 @@ int main() {
         }
     }
 
-    img[n-1][mid - n] = '_';
-    img[n-1][mid + n] = '_';
 
-    int cotegauche = mid - (n - 2);
-    int cotedroit = mid + (n - 2);
+int cotegauche = mid - (n - 2);
+int cotedroit  = mid + (n - 2);
 
-    for (i = n; i < max_height && cotegauche < cotedroit; i++) {
-        for (j = 0; j < width; j++) {
+for (i = n; i < max_height && cotegauche < cotedroit; i++) {
+    for (j = 0; j < width; j++) {
 
-            if (j == cotegauche || j == cotedroit) {
-                img[i][j] = '.';   
-            } else if (j > cotegauche && j < cotedroit) {
-                img[i][j] = 'S';   
-            }
+        if (j == cotegauche || j == cotedroit) {
+            img[i][j] = '.';  
+
+        } else if (j > cotegauche && j < cotedroit) {
+            img[i][j] = 'S';
         }
-
-        cotegauche++;      
-        cotedroit--;
     }
+    cotegauche++;
+    cotedroit--;
+}
+
 
     printf("\nImage (%d x %d) :\n", max_height, width);
     for (i = 0; i < max_height; i++) {
