@@ -42,13 +42,18 @@ int main() {
 int cotegauche = mid - (n - 2);
 int cotedroit  = mid + (n - 2);
 
-for (i = n; i < max_height && cotegauche < cotedroit; i++) {
+for (i = n; i < max_height ; i++) {
     for (j = 0; j < width; j++) {
 
-        if (j == cotegauche || j == cotedroit) {
-            img[i][j] = '.';  
+        if (j == cotegauche) {
+            img[i][j-n] = '.';  
 
-        } else if (j > cotegauche && j < cotedroit) {
+        } 
+
+        else if(j == cotedroit){
+            img[i][j+n] = '.';
+        }
+        else if (j > cotegauche && j < cotedroit) {
             img[i][j] = 'S';
         }
     }
