@@ -10,7 +10,7 @@ void afficherMenu() {
     printf("2. Afficher les notes des eleves\n");
     printf("3. Calculer la moyenne d'un eleve\n");
     printf("4. Calculer la moyenne de la classe\n");
-    printf("5. Afficher la note maximale d'un controle\n");
+    printf("5. Afficher les meilleures notes de chaques conroles\n");
     printf("6. Quitter\n");
 }
 
@@ -98,6 +98,18 @@ int trouverMeilleureNoteControle(int nbEleves, int notes[30][3], int indiceContr
     return max;
 }
 
+// Étape 9 : afficherMeilleuresNotes
+void afficherMeilleuresNotes(int nbEleves, int notes[30][3]) {
+    int meilleurC1 = trouverMeilleureNoteControle(nbEleves, notes, 0);
+    int meilleurC2 = trouverMeilleureNoteControle(nbEleves, notes, 1);
+    int meilleurC3 = trouverMeilleureNoteControle(nbEleves, notes, 2);
+
+    printf("\n===== Meilleures notes =====\n");
+    printf("Meilleure note au C1 : %d\n", meilleurC1);
+    printf("Meilleure note au C2 : %d\n", meilleurC2);
+    printf("Meilleure note au C3 : %d\n", meilleurC3);
+}
+
 int main() {
     int nbEleves = 0;
     int notes[30][3];
@@ -147,21 +159,10 @@ int main() {
                 break;
 
             case 5:
-                if (nbEleves > 0) {
-                    int controle = -1;
-                    while (controle < 1 || controle > 3) {
-                        printf("Choisir le controle (1 = C1, 2 = C2, 3 = C3) : ");
-                        scanf("%d", &controle);
-                        if (controle < 1 || controle > 3) {
-                            printf("Indice invalide.\n");
-                        }
-                    }
-
-                    int meilleure = trouverMeilleureNoteControle(nbEleves, notes, controle - 1);
-                    printf("Meilleure note du controle C%d : %d\n", controle, meilleure);
-                } else {
+                if (nbEleves > 0)
+                    afficherMeilleuresNotes(nbEleves, notes);
+                else
                     printf("Aucune note saisie pour le moment.\n");
-                }
                 break;
 
             case 6:

@@ -53,7 +53,7 @@ for (i = n; i < max_height ; i++) {
         else if(j == cotedroit){
             img[i][j+n] = '.';
         }
-        else if (j > cotegauche && j < cotedroit) {
+        else if (j > cotegauche || j < cotedroit) {
             img[i][j] = 'S';
         }
     }
