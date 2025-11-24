@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 // Etape 1 : afficher_menu
 void afficher_menu() {
     printf("===== DISTRIBUTEUR AUTOMATIQUE =====\n");
@@ -6,6 +7,7 @@ void afficher_menu() {
     printf("2. Quitter\n");
     printf("Votre choix : ");
 }
+
 // Etape 2 : saisir_montant
 int saisir_montant() {
     int montant;
@@ -14,6 +16,14 @@ int saisir_montant() {
     return montant;
 }
 
+// Etape 3 : montant_valide
+int montant_valide(int montant) {
+    if (montant <= 0 || montant > 1000 || montant % 5 != 0) {
+        printf("Erreur : montant invalide\n");
+        return 0;
+    }
+    return 1;
+}
 
 int main() {
     int choix = 0;
@@ -24,7 +34,12 @@ int main() {
 
         if (choix == 1) {
             int montant = saisir_montant();
-            printf("Vous avez saisi : %d euros\n", montant);
+
+            if (montant_valide(montant)) {
+                printf("Montant valide : %d euros\n", montant);
+            } else {
+                printf("Veuillez reessayer.\n");
+            }
         }
         else if (choix == 2) {
             printf(">> Au revoir !\n");
