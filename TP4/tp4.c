@@ -36,10 +36,10 @@ int saisirNombreEleves() {
 }
 
 // Étape 4 : saisirNotes
-void saisirNotes(int nbEleves, int notes[MAX_ELEVES][NB_NOTES]) {
+void saisirNotes(int nbEleves, int notes[30][3]) {
     for (int i = 0; i < nbEleves; i++) {
         printf("Eleve %d :\n", i + 1);
-        for (int j = 0; j < NB_NOTES; j++) {
+        for (int j = 0; j < 3; j++) {
             int note = -1;
             while (note < 0 || note > 20) {
                 printf("  Note %d (0-20) : ", j + 1);
@@ -53,9 +53,30 @@ void saisirNotes(int nbEleves, int notes[MAX_ELEVES][NB_NOTES]) {
     }
 }
 
+// Étape 5 : afficherNotes
+void afficherNotes(int nbEleves, int notes[30][3]) {
+    printf("\nEleve  C1  C2  C3\n");
+    for (int i = 0; i < nbEleves; i++) {
+        printf("%5d", i + 1);
+        for (int j = 0; j < 3; j++) {
+            printf("%5d", notes[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+// Étape 6 : calculerMoyenneEleve
+float calculerMoyenneEleve(int notes[30][3], int indiceEleve) {
+    int somme = 0;
+    for (int j = 0; j < 3; j++) {
+        somme += notes[indiceEleve][j];
+    }
+    return somme / 3.0f; 
+}
+
 int main() {
     int nbEleves = 0;
-    int notes[MAX_ELEVES][NB_NOTES];
+    int notes[30][3];
 
     int quitter = 0;
     while (!quitter) {
@@ -66,6 +87,28 @@ int main() {
             case 1: 
                 nbEleves = saisirNombreEleves();
                 saisirNotes(nbEleves, notes);
+                break;
+            case 2:
+                if (nbEleves > 0)
+                    afficherNotes(nbEleves, notes);
+                else
+                    printf("Aucune note saisie pour le moment.\n");
+                break;
+            case 3:
+                if (nbEleves > 0) {
+                    int eleveChoisi = -1;
+                    while (eleveChoisi < 1 || eleveChoisi > nbEleves) {
+                        printf("Saisir le numero de l'eleve (1-%d) : ", nbEleves);
+                        scanf("%d", &eleveChoisi);
+                        if (eleveChoisi < 1 || eleveChoisi > nbEleves) {
+                            printf("Numero invalide.\n");
+                        }
+                    }
+                    float moyenne = calculerMoyenneEleve(notes, eleveChoisi - 1);
+                    printf("Moyenne de l'eleve %d : %.2f\n", eleveChoisi, moyenne);
+                } else {
+                    printf("Aucune note saisie pour le moment.\n");
+                }
                 break;
             case 6:
                 quitter = 1;
