@@ -65,15 +65,6 @@ void afficherNotes(int nbEleves, int notes[30][3]) {
     }
 }
 
-// Étape 6 : calculerMoyenneEleve
-float calculerMoyenneEleve(int notes[30][3], int indiceEleve) {
-    int somme = 0;
-    for (int j = 0; j < 3; j++) {
-        somme += notes[indiceEleve][j];
-    }
-    return somme / 3.0f; 
-}
-
 int main() {
     int nbEleves = 0;
     int notes[30][3];
@@ -93,22 +84,6 @@ int main() {
                     afficherNotes(nbEleves, notes);
                 else
                     printf("Aucune note saisie pour le moment.\n");
-                break;
-            case 3:
-                if (nbEleves > 0) {
-                    int eleveChoisi = -1;
-                    while (eleveChoisi < 1 || eleveChoisi > nbEleves) {
-                        printf("Saisir le numero de l'eleve (1-%d) : ", nbEleves);
-                        scanf("%d", &eleveChoisi);
-                        if (eleveChoisi < 1 || eleveChoisi > nbEleves) {
-                            printf("Numero invalide.\n");
-                        }
-                    }
-                    float moyenne = calculerMoyenneEleve(notes, eleveChoisi - 1);
-                    printf("Moyenne de l'eleve %d : %.2f\n", eleveChoisi, moyenne);
-                } else {
-                    printf("Aucune note saisie pour le moment.\n");
-                }
                 break;
             case 6:
                 quitter = 1;
