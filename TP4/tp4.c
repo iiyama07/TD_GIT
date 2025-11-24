@@ -10,7 +10,7 @@ void afficherMenu() {
     printf("2. Afficher les notes des eleves\n");
     printf("3. Calculer la moyenne d'un eleve\n");
     printf("4. Calculer la moyenne de la classe\n");
-    printf("5. Afficher la note maximale\n");
+    printf("5. Afficher la note maximale d'un controle\n");
     printf("6. Quitter\n");
 }
 
@@ -85,6 +85,19 @@ float calculerMoyenneGenerale(int nbEleves, int notes[30][3]) {
     return somme / nbEleves;
 }
 
+// Étape 8 : trouverMeilleureNoteControle
+int trouverMeilleureNoteControle(int nbEleves, int notes[30][3], int indiceControle) {
+    int max = 0;
+
+    for (int i = 0; i < nbEleves; i++) {
+        if (notes[i][indiceControle] > max) {
+            max = notes[i][indiceControle];
+        }
+    }
+
+    return max;
+}
+
 int main() {
     int nbEleves = 0;
     int notes[30][3];
@@ -128,6 +141,24 @@ int main() {
                 if (nbEleves > 0) {
                     float moyenneClasse = calculerMoyenneGenerale(nbEleves, notes);
                     printf("Moyenne generale de la classe : %.2f\n", moyenneClasse);
+                } else {
+                    printf("Aucune note saisie pour le moment.\n");
+                }
+                break;
+
+            case 5:
+                if (nbEleves > 0) {
+                    int controle = -1;
+                    while (controle < 1 || controle > 3) {
+                        printf("Choisir le controle (1 = C1, 2 = C2, 3 = C3) : ");
+                        scanf("%d", &controle);
+                        if (controle < 1 || controle > 3) {
+                            printf("Indice invalide.\n");
+                        }
+                    }
+
+                    int meilleure = trouverMeilleureNoteControle(nbEleves, notes, controle - 1);
+                    printf("Meilleure note du controle C%d : %d\n", controle, meilleure);
                 } else {
                     printf("Aucune note saisie pour le moment.\n");
                 }
