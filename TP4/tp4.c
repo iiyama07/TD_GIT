@@ -19,9 +19,26 @@ int lireChoix() {
     return choix;
 }
 
+#include <stdio.h>
+
+// Étape 3 : saisirNombreEleves 
+int saisirNombreEleves() {
+    int nb = 0; 
+    while (nb < 1 || nb > 30) {
+        printf("Nombre d'eleves (1-30) : ");
+        scanf("%d", &nb);
+        if (nb < 1 || nb > 30) {
+            printf("Erreur : le nombre doit etre entre 1 et 30.\n");
+        }
+    }
+    return nb;
+}
+
 int main() {
     afficherMenu();
     int choix = lireChoix();
     printf("Vous avez choisi : %d\n", choix); 
+    int nbEleves = saisirNombreEleves();
+    printf("Nombre d'eleves saisi : %d\n", nbEleves);  
     return 0;
 }
