@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+int MAX_ELEVES = 30;
+int NB_NOTES = 3;
+
 // Étape 1 : afficherMenu
 void afficherMenu() {
     printf("===== Gestion des notes =====\n");
@@ -19,8 +22,6 @@ int lireChoix() {
     return choix;
 }
 
-#include <stdio.h>
-
 // Étape 3 : saisirNombreEleves 
 int saisirNombreEleves() {
     int nb = 0; 
@@ -34,11 +35,46 @@ int saisirNombreEleves() {
     return nb;
 }
 
+// Étape 4 : saisirNotes
+void saisirNotes(int nbEleves, int notes[MAX_ELEVES][NB_NOTES]) {
+    for (int i = 0; i < nbEleves; i++) {
+        printf("Eleve %d :\n", i + 1);
+        for (int j = 0; j < NB_NOTES; j++) {
+            int note = -1;
+            while (note < 0 || note > 20) {
+                printf("  Note %d (0-20) : ", j + 1);
+                scanf("%d", &note);
+                if (note < 0 || note > 20) {
+                    printf("  Erreur : la note doit etre entre 0 et 20.\n");
+                }
+            }
+            notes[i][j] = note;
+        }
+    }
+}
+
 int main() {
-    afficherMenu();
-    int choix = lireChoix();
-    printf("Vous avez choisi : %d\n", choix); 
-    int nbEleves = saisirNombreEleves();
-    printf("Nombre d'eleves saisi : %d\n", nbEleves);  
+    int nbEleves = 0;
+    int notes[MAX_ELEVES][NB_NOTES];
+
+    int quitter = 0;
+    while (!quitter) {
+        afficherMenu();
+        int choix = lireChoix();
+
+        switch (choix) {
+            case 1: 
+                nbEleves = saisirNombreEleves();
+                saisirNotes(nbEleves, notes);
+                break;
+            case 6:
+                quitter = 1;
+                break;
+            default:
+                printf("Option non reconnue.\n");
+        }
+    }
+
+    printf("Programme termine.\n");
     return 0;
 }
