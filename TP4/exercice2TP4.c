@@ -25,6 +25,39 @@ int montant_valide(int montant) {
     return 1;
 }
 
+// Etape 4 : calcul_distribution (billets 500, 200, 100, 50, 20, 10, 5)
+void calcul_distribution(int montant) {
+    int b500 = montant / 500;
+    montant %= 500;
+
+    int b200 = montant / 200;
+    montant %= 200;
+
+    int b100 = montant / 100;
+    montant %= 100;
+
+    int b50 = montant / 50;
+    montant %= 50;
+
+    int b20 = montant / 20;
+    montant %= 20;
+
+    int b10 = montant / 10;
+    montant %= 10;
+
+    int b5 = montant / 5;
+    montant %= 5;
+
+    printf("\nDistribution des billets :\n");
+    printf("500euros : %d\n", b500);
+    printf("200euros : %d\n", b200);
+    printf("100euros : %d\n", b100);
+    printf("50euros  : %d\n", b50);
+    printf("20euros : %d\n", b20);
+    printf("10euros : %d\n", b10);
+    printf("5euros  : %d\n", b5);
+}
+
 int main() {
     int choix = 0;
 
@@ -36,7 +69,7 @@ int main() {
             int montant = saisir_montant();
 
             if (montant_valide(montant)) {
-                printf("Montant valide : %d euros\n", montant);
+                calcul_distribution(montant);
             } else {
                 printf("Veuillez reessayer.\n");
             }
