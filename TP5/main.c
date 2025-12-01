@@ -1,8 +1,18 @@
 #include <stdio.h>
 #include "fichier.h"
+#include <windows.h>
+#include <locale.h>
 
 int main() {
-    int conssomation [7];
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    setlocale(LC_ALL, ".UTF-8");
+
+
+
+    int consommation [7];
+    initialiser(consommation);
+
     int quitter = 0;
     while (!quitter) {
         afficherMenu();
@@ -10,6 +20,7 @@ int main() {
 
         switch (choix) {
             case 1: 
+                ajouterConsommation(consommation);
 
                 break;
 
