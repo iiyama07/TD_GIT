@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "fichier.h"
+#include <windows.h>
+#include <locale.h>
 
 void afficherMenu() {
     printf("=============================\n");
@@ -50,3 +52,17 @@ void ajouterConsommation(int consommation[])
 
 }
 
+void afficherResume(int consommation[]) {
+    
+    printf("\n--- Résumeé du jour ---\n");
+
+    printf("Eau       : %d unités\n", consommation[0]);
+    printf("Café      : %d unités\n", consommation[1]);
+    printf("Bonbons   : %d unités\n", consommation[2]);
+    printf("Gâteau    : %d unités\n", consommation[3]);
+    printf("Légumes   : %d unités\n", consommation[4]);
+    printf("Fruits    : %d unités\n", consommation[5]);
+    printf("Protéïnes : %d unités\n", consommation[6]);
+    printf("\n");
+    Sleep(3000);
+}
