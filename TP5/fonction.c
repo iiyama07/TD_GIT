@@ -66,3 +66,22 @@ void afficherResume(int consommation[]) {
     printf("\n");
     Sleep(3000);
 }
+
+
+int charger(int consommation[]) {
+    FILE * fichier = fopen("consommation.txt", "r");
+
+    if (fichier == NULL) {
+        return 0;
+    }
+
+    for (int i = 0; i < 7; i++) {
+        if (fscanf(fichier, "%d", &consommation[i]) != 1) {
+            fclose(fichier);
+            return 0;
+        }
+    }
+
+    fclose(fichier);
+    return 1;
+}

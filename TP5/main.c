@@ -8,10 +8,14 @@ int main() {
     SetConsoleCP(CP_UTF8);
     setlocale(LC_ALL, ".UTF-8");
 
-
-
     int consommation [7];
     initialiser(consommation);
+
+    if (charger(consommation)) {
+        printf("Données chargées avec succès.\n\n");
+    } else {
+        printf("Pas de fichier trouvé.\n\n");
+    }
 
     int quitter = 0;
     while (!quitter) {
