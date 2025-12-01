@@ -33,7 +33,13 @@ int main() {
                 break;
 
             case 3:
-                quitter = 1;
+                if (sauvegarder(consommation)) {
+                    printf("\nDonnées sauvegardées avec succès.\n");
+                    quitter = 1;
+                } else {
+                    printf("\nErreur lors de la sauvegarde des données.\n");
+                    quitter = 1;
+                }
                 break;
         }
     }

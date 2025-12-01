@@ -8,4 +8,5 @@ void initialiser();
 void ajouterConsommation(int consommation[]);
 void afficherResume(int consommation[]);
 int charger(int consommation[]);
+int sauvegarder(int consommation[]);
 #endif
