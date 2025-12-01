@@ -38,8 +38,15 @@ void ajouterConsommation(int consommation[])
     printf("7.Proteines 🍗\n");
     printf("Votre choix : ");
     scanf("%d", &choix);
-    printf("combien d'unite voulez vous ajoutez?  20\n");
-    scanf("%d", &unite);
-    printf("consommation mise a jour\n");
+
+    if (choix >= 1 && choix <= 7) {
+        printf("Combien d'unitées ajouter ? : ");
+        scanf("%d", &unite);
+        consommation[choix - 1] += unite;
+        printf("Consommation mise à jour.\n\n");
+    } else {
+        printf("Choix invalide.\n\n");
+    }
 
 }
+
