@@ -9,6 +9,7 @@ int main() {
     setlocale(LC_ALL, ".UTF-8");
 
     int consommation [7];
+    int objectifs[7] = {8, 0, 0, 0, 5, 3, 2};
     initialiser(consommation);
 
     if (charger(consommation)) {
@@ -31,8 +32,12 @@ int main() {
             case 2:
                 afficherResume(consommation);
                 break;
+            
+            case 3: 
+                afficherScoreEtObjectifs(consommation, objectifs);
+                break;
 
-            case 3:
+            case 4:
                 if (sauvegarder(consommation)) {
                     printf("\nDonnées sauvegardées avec succès.\n");
                     quitter = 1;
