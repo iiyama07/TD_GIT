@@ -92,7 +92,7 @@ void play_song_excerpt_at(const char *filename, int start, int seconds) {
 Charge les morceaux depuis songs.txt dans un tableau.
 Retourne le nombre de morceaux chargés.
 */
-/***/ load_songs(/***/filename, /***/) {
+/***/ load_songs(char *filename, /***/) {
     FILE *f;
     char line[3 * 256];
     int count = 0;
@@ -132,6 +132,25 @@ Retourne le nombre de morceaux chargés.
     fclose(f);
     return count;
 }
+
+typedef struct {
+    char fichier[256];
+    char titre[256];
+    char artiste[256];
+} Chanson;
+
+
+typedef struct {
+    char nom[100];
+    int score;
+} Joueur;
+
+typedef struct Liste_Joueur {
+    char nom[100];
+    int meilleur_score;
+    struct Liste_Joueur *suivant;
+} Liste_Joueur;
+
 
 /* -------------------------------------------------- */
 /* PROGRAMME PRINCIPAL                                */
