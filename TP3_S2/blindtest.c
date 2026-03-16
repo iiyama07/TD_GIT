@@ -139,13 +139,26 @@ int load_songs(char *filename, Song*song, int *taille) {
     return count;
 }
 
+void melanger(Song song[], int count) {
+    for (int i = count- 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        Song temp = song[i];
+        song[i] = song[j];
+        song[j] = temp;
+    }
+}
+
 
 /* -------------------------------------------------- */
 /* PROGRAMME PRINCIPAL                                */
 /* -------------------------------------------------- */
 
 int main() {
-    
+
+    srand(time(NULL));
+    printf("--- Bienvenu dans......... Le Blind Test !!!!!!!!!!!          tadaaaaaaaaaaaaaaam---\n\n");
+    Song song[150];
+    int song_count = charger_chansons("songs.txt", song, 150   );
 
 
     return 0;
