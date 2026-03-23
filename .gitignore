@@ -19,7 +19,6 @@
 *.vcxproj.user
 *.filters
 *.vs/
-*.vscode/
 *.sln
 *.a
 
