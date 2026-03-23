@@ -35,5 +35,9 @@ namespace TP4TUtest
 		{
 			Assert::AreEqual(divisionExacte(10, 2), 1);
 		}
+		TEST_METHOD(TestSommeTableau) {
+				int tab[] = { 1, 2, 3 };
+			Assert::AreEqual(sommeTableau(tab, 3), 6);
+		}
 	};
 }
