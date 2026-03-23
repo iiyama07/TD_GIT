@@ -22,7 +22,7 @@ int factorielle(int n) {
 int contientMajuscule(const char* chaine) {
     int i = 0;
     while (chaine[i] != '\0') {
-        if (chaine[i] >= 'A' && chaine[i] <= 'Z') {
+        if (chaine[i] >= 'A' || chaine[i] <= 'Z') {
             return 1;
         }
         i++;
