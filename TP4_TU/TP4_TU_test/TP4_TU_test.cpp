@@ -31,5 +31,9 @@ namespace TP4TUtest
 		{
 			Assert::AreEqual(contientMajuscule("ABC"), 1);
 		}
+		TEST_METHOD(TestDivisionExacte)
+		{
+			Assert::AreEqual(divisionExacte(10, 2), 1);
+		}
 	};
 }
