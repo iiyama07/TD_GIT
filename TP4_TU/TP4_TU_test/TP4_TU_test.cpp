@@ -21,5 +21,10 @@ namespace TP4TUtest
 		{
 			Assert::AreEqual(max2(7, 3), 7);
 		}
+
+		TEST_METHOD(TestFactorielle)
+		{
+			Assert::AreEqual(factorielle(5), 120);
+		}
 	};
 }
